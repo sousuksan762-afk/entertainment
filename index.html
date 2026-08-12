@@ -1,842 +1,739 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PulseZone | Youth Entertainment Hub</title>
-  
-  <!-- COMBINED STYLESHEET -->
-  <style>
-    /* ==========================================================================
-       GLOBAL STYLES & NEON THEME (GEN-Z / YOUTH AESTHETIC)
-       ========================================================================== */
-    :root {
-      --bg-main: #0b0c10;
-      --bg-card: #1f2833;
-      --text-main: #ffffff;
-      --text-muted: #c5c6c7;
-      --neon-purple: #9d4edd;
-      --neon-pink: #ff007f;
-      --neon-cyan: #00f0ff;
-      --accent-glow: rgba(0, 240, 255, 0.3);
-      --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      --transition: all 0.3s ease-in-out;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <title>My Portfolio | IT Student</title>
+    <link rel="stylesheet" href="sytle.css">
 
-    body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      font-family: var(--font-family);
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    /* Page Navigation Control */
-    .page-section {
-      display: none; /* Hidden by default */
-      animation: fadeIn 0.4s ease-in-out;
-    }
-
-    .page-section.active-page {
-      display: block; /* Displayed when active */
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ==========================================================================
-       HEADER & NAVIGATION
-       ========================================================================== */
-    .main-header {
-      background-color: rgba(11, 12, 16, 0.9);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255, 0, 127, 0.2);
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 2rem;
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 800;
-      background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink));
-      -webkit-background-clipe: text;
-      -webkit-text-fill-color: transparent;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      cursor: pointer;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .nav-links a {
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: var(--transition);
-      position: relative;
-      cursor: pointer;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--neon-cyan);
-      text-shadow: 0 0 8px var(--accent-glow);
-    }
-
-    .nav-links a.active::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--neon-pink);
-      box-shadow: 0 0 8px var(--neon-pink);
-    }
-
-    /* ==========================================================================
-       GLOBAL LAYOUT & CARD COMPONENTS
-       ========================================================================== */
-    main {
-      flex: 1;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 3rem 2rem;
-    }
-
-    .section-title {
-      font-size: 2.2rem;
-      font-weight: 800;
-      margin-bottom: 2rem;
-      text-align: center;
-      text-transform: uppercase;
-      background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan));
-      -webkit-background-clipe: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.8rem 2rem;
-      border-radius: 30px;
-      font-weight: 700;
-      cursor: pointer;
-      border: none;
-      transition: var(--transition);
-      text-transform: uppercase;
-      font-size: 0.9rem;
-    }
-
-    .btn-primary {
-      background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
-      color: var(--text-main);
-      box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--neon-cyan);
-      border: 2px solid var(--neon-cyan);
-    }
-
-    .btn-secondary:hover {
-      background: var(--neon-cyan);
-      color: var(--bg-main);
-      box-shadow: 0 0 15px var(--neon-cyan);
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      background-color: var(--bg-card);
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: var(--transition);
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: var(--neon-cyan);
-      box-shadow: 0 5px 20px rgba(0, 240, 255, 0.2);
-    }
-
-    .card-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .card-body {
-      padding: 1.5rem;
-    }
-
-    .card-title {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-main);
-    }
-
-    .card-text {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-
-    /* HOME: HERO & NEWSLETTER */
-    .hero {
-      height: 80vh;
-      background: linear-gradient(rgba(11, 12, 16, 0.7), rgba(11, 12, 16, 0.9)), 
-                  url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 1rem;
-    }
-
-    .hero-content h1 {
-      font-size: 3.5rem;
-      font-weight: 900;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-
-    .hero-content p {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto 2rem auto;
-    }
-
-    .newsletter {
-      background: linear-gradient(135deg, rgba(157, 78, 221, 0.2), rgba(0, 240, 255, 0.1));
-      border-radius: 16px;
-      padding: 3rem;
-      text-align: center;
-      margin-top: 4rem;
-      border: 1px solid var(--neon-purple);
-    }
-
-    .newsletter-form {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .newsletter-form input[type="email"] {
-      padding: 0.8rem 1.5rem;
-      border-radius: 30px;
-      border: 1px solid var(--neon-cyan);
-      background: rgba(0, 0, 0, 0.5);
-      color: var(--text-main);
-      outline: none;
-      min-width: 280px;
-    }
-
-    /* ENTERTAINMENT HUB */
-    .media-tag {
-      display: inline-block;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .tag-video { background: var(--neon-pink); color: #fff; }
-    .tag-music { background: var(--neon-cyan); color: #000; }
-    .tag-cartoon { background: var(--neon-purple); color: #fff; }
-
-    .audio-player-mock {
-      width: 100%;
-      margin-top: 1rem;
-    }
-
-    /* SERVICES & PRICING */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .pricing-card {
-      background: var(--bg-card);
-      border-radius: 16px;
-      padding: 2.5rem 2rem;
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      position: relative;
-      transition: var(--transition);
-    }
-
-    .pricing-card.featured {
-      border-color: var(--neon-pink);
-      box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
-      transform: scale(1.03);
-    }
-
-    .price {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--neon-cyan);
-      margin: 1rem 0;
-    }
-
-    .price-features {
-      margin: 1.5rem 0;
-      color: var(--text-muted);
-    }
-
-    .price-features li {
-      margin-bottom: 0.8rem;
-    }
-
-    /* ABOUT PAGE */
-    .mission-box {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 4rem auto;
-      font-size: 1.2rem;
-      color: var(--text-muted);
-    }
-
-    .stats-grid {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 2rem;
-      background: var(--bg-card);
-      padding: 2.5rem;
-      border-radius: 16px;
-      margin-top: 3rem;
-      border: 1px solid var(--neon-purple);
-    }
-
-    .stat-item {
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 2.8rem;
-      font-weight: 900;
-      color: var(--neon-cyan);
-    }
-
-    /* CONTACT PAGE */
-    .contact-wrapper {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 3rem;
-    }
-
-    .contact-form {
-      background: var(--bg-card);
-      padding: 2rem;
-      border-radius: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .form-group label {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--neon-cyan);
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      padding: 0.8rem;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(0, 0, 0, 0.4);
-      color: var(--text-main);
-      outline: none;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--neon-pink);
-    }
-
-    .social-connect-box {
-      background: var(--bg-card);
-      padding: 2rem;
-      border-radius: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .social-links-large {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 100%;
-    }
-
-    .social-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.8rem;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      font-weight: 700;
-      transition: var(--transition);
-    }
-
-    .social-btn:hover {
-      background: var(--neon-purple);
-      color: #fff;
-    }
-
-    /* ==========================================================================
-       FOOTER
-       ========================================================================== */
-    .main-footer {
-      background-color: #050507;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 3rem 0 1.5rem 0;
-      margin-top: auto;
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-top: 2rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    @media (max-width: 768px) {
-      .nav-container {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .hero-content h1 {
-        font-size: 2.3rem;
-      }
-      .contact-wrapper {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <!-- NAVIGATION HEADER -->
-  <header class="main-header">
-    <div class="nav-container">
-      <div class="logo" onclick="switchTab('home')">PulseZone</div>
-      <nav>
-        <ul class="nav-links">
-          <li><a id="nav-home" class="active" onclick="switchTab('home')">Home</a></li>
-          <li><a id="nav-entertainment" onclick="switchTab('entertainment')">Entertainment Hub</a></li>
-          <li><a id="nav-services" onclick="switchTab('services')">Services</a></li>
-          <li><a id="nav-about" onclick="switchTab('about')">About</a></li>
-          <li><a id="nav-contact" onclick="switchTab('contact')">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <!-- ================= NAVBAR ================= -->
+    <header class="header">
+        <nav class="navbar container">
 
-  <main>
-    <!-- PAGE 1: HOME -->
-    <div id="page-home" class="page-section active-page">
-      <section class="hero">
-        <div class="hero-content">
-          <h1>THE NEXT GEN<br><span style="color: var(--neon-cyan);">ENTERTAINMENT</span></h1>
-          <p>Your ultimate portal for trending music, viral videos, animated culture, and underground creator streams.</p>
-          <button onclick="switchTab('entertainment')" class="btn btn-primary">Explore Trends</button>
-        </div>
-      </section>
+            <a href="#home" class="logo">
+                Portfolio<span>.</span>
+            </a>
 
-      <section class="container">
-        <h2 class="section-title">Trending Now</h2>
-        <div class="grid-3">
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Music Stage" class="card-img">
-            <div class="card-body">
-              <span class="media-tag tag-music">Music</span>
-              <h3 class="card-title">Neon Beats Live 2026</h3>
-              <p class="card-text">Catch the hottest synthwave and hyperpop live streams of the week.</p>
-              <button onclick="switchTab('entertainment')" class="btn btn-secondary">Listen Now</button>
-            </div>
-          </article>
-
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=600&q=80" alt="Video Recording" class="card-img">
-            <div class="card-body">
-              <span class="media-tag tag-video">Video</span>
-              <h3 class="card-title">Cyber-City Short Film</h3>
-              <p class="card-text">An award-winning futuristic short series created entirely by youth creators.</p>
-              <button onclick="switchTab('entertainment')" class="btn btn-secondary">Watch Video</button>
-            </div>
-          </article>
-
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80" alt="Anime Art" class="card-img">
-            <div class="card-body">
-              <span class="media-tag tag-cartoon">Cartoon</span>
-              <h3 class="card-title">Mecha Spirit: Season 2</h3>
-              <p class="card-text">The viral animated web series returns with jaw-dropping action scenes.</p>
-              <button onclick="switchTab('entertainment')" class="btn btn-secondary">Read More</button>
-            </div>
-          </article>
-        </div>
-
-        <section class="newsletter">
-          <h2>STAY IN THE LOOP</h2>
-          <p>Get instant drop alerts for new music releases, live events, and exclusive merchandise.</p>
-          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-            <input type="email" placeholder="Enter your email..." required>
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-          </form>
-        </section>
-      </section>
-    </div>
-
-    <!-- PAGE 2: ENTERTAINMENT HUB -->
-    <div id="page-entertainment" class="page-section">
-      <div class="container">
-        <h1 class="section-title">The Entertainment Vault</h1>
-
-        <section style="margin-bottom: 4rem;">
-          <h2 style="color: var(--neon-pink); margin-bottom: 1.5rem;">🎥 Trending Videos & Music Videos</h2>
-          <div class="grid-3">
-            <article class="card">
-              <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=600&q=80" alt="Camera shot" class="card-img">
-              <div class="card-body">
-                <span class="media-tag tag-video">Official MV</span>
-                <h3 class="card-title">Electric Heartbeat - Official MV</h3>
-                <p class="card-text">4K Official release by synth artist Nova.</p>
-                <button class="btn btn-primary" style="width: 100%;">▶ Watch MV</button>
-              </div>
-            </article>
-            <article class="card">
-              <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Concert crowd" class="card-img">
-              <div class="card-body">
-                <span class="media-tag tag-video">Vlog</span>
-                <h3 class="card-title">Underground Fest Experience</h3>
-                <p class="card-text">Behind the scenes with our youth ambassadors.</p>
-                <button class="btn btn-primary" style="width: 100%;">▶ Watch Video</button>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section style="margin-bottom: 4rem;">
-          <h2 style="color: var(--neon-cyan); margin-bottom: 1.5rem;">🎧 Audio & Track Drops</h2>
-          <div class="grid-3">
-            <article class="card">
-              <div class="card-body">
-                <span class="media-tag tag-music">Single</span>
-                <h3 class="card-title">Midnight Drive (Lo-Fi)</h3>
-                <p class="card-text">Artist: DJ Chillwave</p>
-                <audio controls class="audio-player-mock">
-                  <source src="#" type="audio/mpeg">
-                  Your browser does not support the audio element.
-                </audio>
-              </div>
-            </article>
-            <article class="card">
-              <div class="card-body">
-                <span class="media-tag tag-music">Podcast</span>
-                <h3 class="card-title">Gen-Z Talks: Ep 42</h3>
-                <p class="card-text">Host: Sarah & Friends</p>
-                <audio controls class="audio-player-mock">
-                  <source src="#" type="audio/mpeg">
-                  Your browser does not support the audio element.
-                </audio>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section>
-          <h2 style="color: var(--neon-purple); margin-bottom: 1.5rem;">🎨 Cartoons & Anime Shorts</h2>
-          <div class="grid-3">
-            <article class="card">
-              <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" alt="Anime Illustration" class="card-img">
-              <div class="card-body">
-                <span class="media-tag tag-cartoon">Ep 05</span>
-                <h3 class="card-title">Pixel Knights</h3>
-                <p class="card-text">Rating: ★★★★★ (4.9/5)</p>
-                <button class="btn btn-secondary">Stream Episode</button>
-              </div>
-            </article>
-          </div>
-        </section>
-      </div>
-    </div>
-
-    <!-- PAGE 3: SERVICES -->
-    <div id="page-services" class="page-section">
-      <div class="container">
-        <h1 class="section-title">Youth Creator Offerings</h1>
-
-        <div class="grid-3">
-          <div class="card">
-            <div class="card-body">
-              <h3 class="card-title" style="color: var(--neon-cyan);">Live Event Streaming</h3>
-              <p class="card-text">HD low-latency streaming infrastructure for virtual concerts, eSports tournaments, and youth festivals.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h3 class="card-title" style="color: var(--neon-pink);">Creator Collab Network</h3>
-              <p class="card-text">Get matched with other musicians, animators, and video editors to create collaborative projects.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h3 class="card-title" style="color: var(--neon-purple);">Talent Showcase</h3>
-              <p class="card-text">Submit your original work to be featured directly on our homepage and social network channels.</p>
-            </div>
-          </div>
-        </div>
-
-        <h2 class="section-title" style="margin-top: 5rem;">Membership Tiers</h2>
-        <div class="pricing-grid">
-          <div class="pricing-card">
-            <h3>Free Listener</h3>
-            <div class="price">$0</div>
-            <ul class="price-features">
-              <li>Standard Audio Streaming</li>
-              <li>Access to Public Videos</li>
-              <li>Community Discord Entry</li>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="btn btn-secondary">Get Started</button>
-          </div>
-          <div class="pricing-card featured">
-            <span class="media-tag tag-video" style="position: absolute; top: 15px; right: 15px;">POPULAR</span>
-            <h3>Pro Creator</h3>
-            <div class="price">$9.99<span style="font-size: 1rem;">/mo</span></div>
-            <ul class="price-features">
-              <li>4K Video & Lossless Audio</li>
-              <li>Creator Collab Portal</li>
-              <li>Zero Ad Interruptions</li>
-              <li>Monthly Showcase Entry</li>
-            </ul>
-            <button class="btn btn-primary">Join Pro</button>
-          </div>
-          <div class="pricing-card">
-            <h3>VIP Club</h3>
-            <div class="price">$24.99<span style="font-size: 1rem;">/mo</span></div>
-            <ul class="price-features">
-              <li>All Pro Benefits</li>
-              <li>Exclusive Concert Backstage Pass</li>
-              <li>1-on-1 Mentorship Sessions</li>
-            </ul>
-            <button class="btn btn-secondary">Go VIP</button>
-          </div>
+
+        </nav>
+    </header>
+
+
+    <!-- ================= HOME ================= -->
+    <main>
+
+        <section id="home" class="hero">
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <p class="small-title">
+                        Hello, I'm
+                    </p>
+
+                    <h1>
+                        SOKSAN <span>SOU</span>
+                    </h1>
+
+                    <h2>
+                        IT Student & Web Developer
+                    </h2>
+
+                    <p class="hero-description">
+                        I am a first-year Web Development student
+                        passionate about creating websites, learning
+                        programming, and solving problems through technology.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#projects" class="btn primary-btn">
+                            View My Projects
+                        </a>
+
+                        <a href="#contact" class="btn secondary-btn">
+                            Contact Me
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-image">
+
+                    <div class="profile-circle">
+                        <img
+                            src="./picture/photo_2026-02-02_10-25-37 (2).jpg"
+                            alt="Profile photo"
+                        >
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ABOUT ================= -->
+        <section id="about" class="section">
+
+            <div class="container">
+
+                <div class="section-title">
+                    <p>Get To Know Me</p>
+                    <h2>About <span>Me</span></h2>
+                </div>
+
+
+                <div class="about-content">
+
+                    <div class="about-image">
+                        <img
+                            src="images/about.jpg"
+                            alt="About me"
+                        >
+                    </div>
+
+
+                    <div class="about-text">
+
+                        <h3>
+                            I'm a Web Development Student
+                        </h3>
+
+                        <p>
+                            My name is Soksan Sou. I am currently a
+                            first-year Web Development student at
+                            Passerelles Numériques Cambodia.
+                        </p>
+
+                        <p>
+                            I am interested in web development,
+                            programming, quality assurance, and
+                            creating useful digital experiences.
+                        </p>
+
+                        <p>
+                            I continuously improve my technical and
+                            communication skills by working on projects
+                            and learning new technologies.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EDUCATION ================= -->
+        <section id="education" class="section education-section">
+
+            <div class="container">
+
+                <div class="section-title">
+                    <p>My Learning Journey</p>
+                    <h2>Education</h2>
+                </div>
+
+
+                <div class="education-card">
+
+                    <div class="education-icon">
+                        🎓
+                    </div>
+
+                    <div class="education-info">
+
+                        <h3>
+                            Passerelles Numériques Cambodia
+                        </h3>
+
+                        <h4>
+                            Web Development
+                        </h4>
+
+                        <p>
+                            First Year Student — Generation 2027
+                        </p>
+
+                        <span>
+                            2026 - Present
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SKILLS ================= -->
+        <section id="skills" class="section">
+
+            <div class="container">
+
+                <div class="section-title">
+                    <p>What I Can Do</p>
+                    <h2>My <span>Skills</span></h2>
+                </div>
+
+
+                <div class="skills-grid">
+
+                    <!-- HTML -->
+                    <div class="skill-card">
+
+                        <div class="skill-icon">
+                            HTML
+                        </div>
+
+                        <h3>HTML5</h3>
+
+                        <p>
+                            Building semantic and structured
+                            web pages.
+                        </p>
+
+                        <div class="progress">
+                            <span style="width: 85%;"></span>
+                        </div>
+
+                        <small>85%</small>
+
+                    </div>
+
+
+                    <!-- CSS -->
+                    <div class="skill-card">
+
+                        <div class="skill-icon">
+                            CSS
+                        </div>
+
+                        <h3>CSS3</h3>
+
+                        <p>
+                            Creating responsive and modern
+                            web designs.
+                        </p>
+
+                        <div class="progress">
+                            <span style="width: 80%;"></span>
+                        </div>
+
+                        <small>80%</small>
+
+                    </div>
+
+
+                    <!-- SASS -->
+                    <div class="skill-card">
+
+                        <div class="skill-icon">
+                            SASS
+                        </div>
+
+                        <h3>SASS / SCSS</h3>
+
+                        <p>
+                            Writing organized and reusable
+                            CSS styles.
+                        </p>
+
+                        <div class="progress">
+                            <span style="width: 70%;"></span>
+                        </div>
+
+                        <small>70%</small>
+
+                    </div>
+
+
+                    <!-- Python -->
+                    <div class="skill-card">
+
+                        <div class="skill-icon">
+                            PY
+                        </div>
+
+                        <h3>Python</h3>
+
+                        <p>
+                            Developing basic programs and
+                            solving programming problems.
+                        </p>
+
+                        <div class="progress">
+                            <span style="width: 75%;"></span>
+                        </div>
+
+                        <small>75%</small>
+
+                    </div>
+
+
+                    <!-- Flask -->
+                    <div class="skill-card">
+
+                        <div class="skill-icon">
+                            FL
+                        </div>
+
+                        <h3>Flask</h3>
+
+                        <p>
+                            Creating basic web applications
+                            with Python.
+                        </p>
+
+                        <div class="progress">
+                            <span style="width: 60%;"></span>
+                        </div>
+
+                        <small>60%</small>
+
+                    </div>
+
+
+                    <!-- Git -->
+                    <div class="skill-card">
+
+                        <div class="skill-icon">
+                            GIT
+                        </div>
+
+                        <h3>Git & GitHub</h3>
+
+                        <p>
+                            Managing code and collaborating
+                            using version control.
+                        </p>
+
+                        <div class="progress">
+                            <span style="width: 70%;"></span>
+                        </div>
+
+                        <small>70%</small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROJECTS ================= -->
+        <section id="projects" class="section projects-section">
+
+            <div class="container">
+
+                <div class="section-title">
+                    <p>My Recent Work</p>
+                    <h2>My <span>Projects</span></h2>
+                </div>
+
+
+                <div class="projects-grid">
+
+                    <!-- Project 1 -->
+                    <article class="project-card">
+
+                        <img
+                            src="images/project1.jpg"
+                            alt="IT Awareness Club"
+                        >
+
+                        <div class="project-content">
+
+                            <span class="project-category">
+                                HTML / CSS
+                            </span>
+
+                            <h3>
+                                IT Awareness Club
+                            </h3>
+
+                            <p>
+                                A responsive website designed to
+                                introduce IT awareness and provide
+                                useful information for students.
+                            </p>
+
+                            <div class="project-buttons">
+
+                                <a href="#" class="project-btn">
+                                    Live Demo
+                                </a>
+
+                                <a href="#" class="project-btn outline">
+                                    GitHub
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Project 2 -->
+                    <article class="project-card">
+
+                        <img
+                            src="images/project2.jpg"
+                            alt="Python Mini Projects"
+                        >
+
+                        <div class="project-content">
+
+                            <span class="project-category">
+                                Python
+                            </span>
+
+                            <h3>
+                                Python Mini Projects
+                            </h3>
+
+                            <p>
+                                A collection of Python exercises and
+                                mini applications focused on logic,
+                                functions, lists, dictionaries, and
+                                problem solving.
+                            </p>
+
+                            <div class="project-buttons">
+
+                                <a href="#" class="project-btn">
+                                    View Project
+                                </a>
+
+                                <a href="#" class="project-btn outline">
+                                    GitHub
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Project 3 -->
+                    <article class="project-card">
+
+                        <img
+                            src="images/project3.jpg"
+                            alt="Digital Service Research"
+                        >
+
+                        <div class="project-content">
+
+                            <span class="project-category">
+                                UX / Research
+                            </span>
+
+                            <h3>
+                                Digital Service Research
+                            </h3>
+
+                            <p>
+                                A research project focused on
+                                understanding users, their problems,
+                                and possible digital solutions.
+                            </p>
+
+                            <div class="project-buttons">
+
+                                <a href="#" class="project-btn">
+                                    View Project
+                                </a>
+
+                                <a href="#" class="project-btn outline">
+                                    Details
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STRENGTHS ================= -->
+        <section class="section">
+
+            <div class="container">
+
+                <div class="section-title">
+                    <p>What Makes Me Different</p>
+                    <h2>My <span>Strengths</span></h2>
+                </div>
+
+
+                <div class="strength-grid">
+
+                    <div class="strength-card">
+                        <div>💡</div>
+                        <h3>Problem Solving</h3>
+                        <p>
+                            I enjoy analyzing problems and
+                            finding practical solutions.
+                        </p>
+                    </div>
+
+
+                    <div class="strength-card">
+                        <div>📚</div>
+                        <h3>Fast Learner</h3>
+                        <p>
+                            I am always willing to learn
+                            new technologies and skills.
+                        </p>
+                    </div>
+
+
+                    <div class="strength-card">
+                        <div>🤝</div>
+                        <h3>Teamwork</h3>
+                        <p>
+                            I enjoy working with others and
+                            sharing ideas.
+                        </p>
+                    </div>
+
+
+                    <div class="strength-card">
+                        <div>🎯</div>
+                        <h3>Responsibility</h3>
+                        <p>
+                            I take responsibility for my work
+                            and try to complete tasks on time.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FUTURE GOALS ================= -->
+        <section class="section goals-section">
+
+            <div class="container">
+
+                <div class="section-title">
+                    <p>Where I'm Going</p>
+                    <h2>Future <span>Goals</span></h2>
+                </div>
+
+
+                <div class="goals-content">
+
+                    <div class="goal">
+                        <span>01</span>
+
+                        <div>
+                            <h3>
+                                Become a Professional Developer
+                            </h3>
+
+                            <p>
+                                Improve my programming and web
+                                development skills.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="goal">
+                        <span>02</span>
+
+                        <div>
+                            <h3>
+                                Build Real Projects
+                            </h3>
+
+                            <p>
+                                Create useful applications that
+                                solve real-world problems.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="goal">
+                        <span>03</span>
+
+                        <div>
+                            <h3>
+                                Work in the IT Industry
+                            </h3>
+
+                            <p>
+                                Gain professional experience and
+                                contribute to meaningful projects.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CONTACT ================= -->
+        <section id="contact" class="section contact-section">
+
+            <div class="container">
+
+                <div class="section-title">
+                    <p>Let's Connect</p>
+                    <h2>Contact <span>Me</span></h2>
+                </div>
+
+
+                <div class="contact-content">
+
+                    <div class="contact-info">
+
+                        <h3>
+                            Have a project or opportunity?
+                        </h3>
+
+                        <p>
+                            Feel free to contact me. I would be
+                            happy to connect and discuss new
+                            opportunities.
+                        </p>
+
+
+                        <div class="contact-item">
+                            <strong>Email</strong>
+                            <p>
+                                your-email@gmail.com
+                            </p>
+                        </div>
+
+
+                        <div class="contact-item">
+                            <strong>Location</strong>
+                            <p>
+                                Cambodia
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <form class="contact-form">
+
+                        <input
+                            type="text"
+                            placeholder="Your Name"
+                            required
+                        >
+
+                        <input
+                            type="email"
+                            placeholder="Your Email"
+                            required
+                        >
+
+                        <textarea
+                            rows="6"
+                            placeholder="Your Message"
+                            required
+                        ></textarea>
+
+                        <button
+                            type="submit"
+                            class="btn primary-btn"
+                        >
+                            Send Message
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+
+        <div class="container">
+
+            <h3>
+                SOKSAN SOU
+            </h3>
+
+            <p>
+                IT Student & Web Developer
+            </p>
+
+            <div class="social-links">
+
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Facebook</a>
+
+            </div>
+
+            <p class="copyright">
+                © 2026 Soksan Sou. All Rights Reserved.
+            </p>
+
         </div>
-      </div>
-    </div>
 
-    <!-- PAGE 4: ABOUT -->
-    <div id="page-about" class="page-section">
-      <div class="container">
-        <h1 class="section-title">Built For The New Gen</h1>
-
-        <div class="mission-box">
-          <p>PulseZone was founded with a singular purpose: to break down corporate gatekeeping in entertainment and give Gen-Z and Millennial creators an unfiltered, high-energy platform to express themselves through music, video, and digital art.</p>
-        </div>
-
-        <h2 class="section-title">Youth Ambassadors</h2>
-        <div class="grid-3">
-          <div class="card" style="text-align: center;">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Ambassador" class="card-img">
-            <div class="card-body">
-              <h3 class="card-title">Alex Rivera</h3>
-              <p class="card-text" style="color: var(--neon-cyan);">Head of Music & Audio</p>
-            </div>
-          </div>
-          <div class="card" style="text-align: center;">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Ambassador" class="card-img">
-            <div class="card-body">
-              <h3 class="card-title">Jordan Lee</h3>
-              <p class="card-text" style="color: var(--neon-pink);">Animation & Visual Lead</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-number">2.5M+</div>
-            <p style="color: var(--text-muted);">Monthly Streams</p>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">50K+</div>
-            <p style="color: var(--text-muted);">Active Creators</p>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">120+</div>
-            <p style="color: var(--text-muted);">Live Virtual Shows</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PAGE 5: CONTACT -->
-    <div id="page-contact" class="page-section">
-      <div class="container">
-        <h1 class="section-title">Get In Touch</h1>
-
-        <div class="contact-wrapper">
-          <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" placeholder="Alex Turner" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Your Email</label>
-              <input type="email" id="email" placeholder="alex@example.com" required>
-            </div>
-            <div class="form-group">
-              <label for="category">Inquiry Category</label>
-              <select id="category">
-                <option value="collaboration">Creator Collaboration</option>
-                <option value="support">Technical Support</option>
-                <option value="feedback">General Feedback</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" rows="5" placeholder="Tell us what's on your mind..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
-          </form>
-
-          <div class="social-connect-box">
-            <h3 style="color: var(--neon-cyan);">Join The Community</h3>
-            <p style="color: var(--text-muted); text-align: center; font-size: 0.9rem;">Follow our channels for daily content drops.</p>
-            <div class="social-links-large">
-              <a href="#" class="social-btn">📱 Tik Tok</a>
-              <a href="#" class="social-btn">📸 Instagram</a>
-              <a href="#" class="social-btn">▶ YouTube</a>
-              <a href="#" class="social-btn">💬 Discord</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- SHARED FOOTER -->
-  <footer class="main-footer">
-    <div class="footer-container">
-      <div>
-        <div class="logo" onclick="switchTab('home')">PulseZone</div>
-        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">Fueling the culture of tomorrow.</p>
-      </div>
-      <div style="display: flex; gap: 1.5rem;">
-        <a onclick="switchTab('entertainment')" style="cursor:pointer;">Hub</a>
-        <a onclick="switchTab('services')" style="cursor:pointer;">Services</a>
-        <a onclick="switchTab('about')" style="cursor:pointer;">About</a>
-        <a onclick="switchTab('contact')" style="cursor:pointer;">Contact</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 PulseZone Entertainment Inc. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- SIMPLE TAB-SWITCHING JAVASCRIPT -->
-  <script>
-    function switchTab(pageId) {
-      // Hide all pages
-      const pages = document.querySelectorAll('.page-section');
-      pages.forEach(page => page.classList.remove('active-page'));
-
-      // Remove active class from all nav items
-      const navLinks = document.querySelectorAll('.nav-links a');
-      navLinks.forEach(link => link.classList.remove('active'));
-
-      // Show selected page
-      document.getElementById('page-' + pageId).classList.add('active-page');
-
-      // Highlight active nav link
-      const activeNav = document.getElementById('nav-' + pageId);
-      if (activeNav) {
-        activeNav.classList.add('active');
-      }
-
-      // Scroll to top automatically
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
+    </footer>
 
 </body>
 </html>
