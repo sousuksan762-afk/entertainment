@@ -14,7 +14,7 @@ html {
 
 body {
     font-family: "Poppins", sans-serif;
-    background: #ffffff;
+    background: #dad8d8;
     color: #222;
     line-height: 1.6;
 }
@@ -103,7 +103,7 @@ ul {
     top: 0;
     z-index: 1000;
 
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(212, 211, 211, 0.95);
 
     border-bottom: 1px solid var(--border);
 
